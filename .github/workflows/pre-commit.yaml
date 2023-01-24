@@ -74,5 +74,5 @@ jobs:
           ls
           cat tfplan.json
           pwd
-          docker run --volume "${{ env.GITHUB_WORKSPACE }}":/tf busybox ls; pwd
+          docker run --volume "${{ env.GITHUB_WORKSPACE }}":/tf busybox pwd
           docker run --volume "${{ env.GITHUB_WORKSPACE }}":/tf bridgecrew/checkov -f tfplan.json --soft-fail
