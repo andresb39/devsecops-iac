@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
 
-permissions: write-all
+permissions: read-all
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
