@@ -28,7 +28,7 @@ repos:
           - --args=--soft-fail
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0  # Use the ref you want to point at
+    rev: v4.4.0  # Use the ref you want to point at
     hooks:
       - id: check-merge-conflict
       - id: trailing-whitespace
@@ -40,7 +40,7 @@ repos:
 
   #With bridgecrew
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: 'd2c665bce275da345c67a0478cda42204aac2fc7' # change to tag or sha
+    rev: 'test_check' # change to tag or sha
     hooks:
       - id: checkov
         verbose: true
