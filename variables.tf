@@ -43,6 +43,7 @@ variable "autoscaling_namespace" {
 }
 
 variable "tags" {
+  description = "Default tags"
   type = map(string)
   default = {
     owner     = "DevOps"

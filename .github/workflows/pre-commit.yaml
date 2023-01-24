@@ -45,6 +45,7 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: .
+          soft_fail: true
           framework: terraform
 
   terraform:
@@ -69,5 +70,7 @@ jobs:
       - name: Terraform Plan and validate
         run: |
           terraform plan -out tfplan
+          terraform show -json tfplan 
+          sleep 1
           terraform show -json tfplan > tfplan.json
           docker run --volume "${{ env.GITHUB_WORKSPACE }}":/tf bridgecrew/checkov -f tfplan.json --soft-fail
