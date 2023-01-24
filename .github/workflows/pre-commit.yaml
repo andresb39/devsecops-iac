@@ -80,6 +80,6 @@ jobs:
       - name: Terraform Plan and validate
         run: |
           terraform plan -out tfplan
-          terraform show -json tfplan > | jq '.' > tfplan.json
+          terraform show -json tfplan | jq '.' > tfplan.json
           docker run --volume "${{ github.workspace }}:/tf" -w /tf bridgecrew/checkov -f tfplan.json --soft-fail
           docker run --volume "${{ github.workspace }}:/tf" -w /tf busybox cat tfplan.json
