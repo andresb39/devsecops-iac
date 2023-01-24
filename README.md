@@ -1,2 +1,2 @@
-# devsecops-iac
+# DevSecOps-IaC
 Test IaC DevSecOps
