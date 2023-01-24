@@ -71,8 +71,5 @@ jobs:
         run: |
           terraform plan -out tfplan
           terraform show -json tfplan > tfplan.json
-          ls
-          cat tfplan.json
-          pwd
           docker run --volume "${{ github.workspace }}:/tf" busybox ls /tf
           docker run --volume "${{ github.workspace }}:/tf" bridgecrew/checkov -f /tf/tfplan.json --soft-fail
