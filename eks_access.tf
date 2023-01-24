@@ -10,10 +10,10 @@ resource "aws_key_pair" "kp" {
   provisioner "local-exec" {
     command = "echo '${tls_private_key.pk.private_key_pem}' > ./${var.cluster_name}.pem"
   }
-  
-  tags = "${merge(var.tags, tomap({
-    "Name" = "${var.cluster_name}-key"})
-    )}"
+
+  tags = (merge(var.tags, tomap({
+    "Name" = "${var.cluster_name}-key" })
+  ))
 }
 
 resource "aws_security_group" "remote_access" {
@@ -26,7 +26,7 @@ resource "aws_security_group" "remote_access" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [ module.vpc.vpc_cidr_block ] //[module.vpc.aws_vpc.this.0.cidr_block] 
+    cidr_blocks = [module.vpc.vpc_cidr_block] //[module.vpc.aws_vpc.this.0.cidr_block] 
   }
 
   egress {
@@ -37,6 +37,6 @@ resource "aws_security_group" "remote_access" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = var.tags
+  tags       = var.tags
   depends_on = [module.vpc]
 }

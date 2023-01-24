@@ -33,7 +33,7 @@ variable "autoscaling_chart_repo" {
 variable "autoscaling_chart_version" {
   type        = string
   description = "Autoscaling Helm chart version."
-  default     = "9.11.0" 
+  default     = "9.11.0"
 }
 
 variable "autoscaling_namespace" {
@@ -45,7 +45,7 @@ variable "autoscaling_namespace" {
 variable "tags" {
   type = map(string)
   default = {
-    owner       = "DevOps"
-    managered   = "terraform" 
+    owner     = "DevOps"
+    managered = "terraform"
   }
 }

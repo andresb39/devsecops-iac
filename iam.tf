@@ -9,8 +9,8 @@ data "aws_caller_identity" "current" {}
 
 # Role for AutoScaling 
 resource "aws_iam_role" "autoscaler" {
-  name  = "${module.eks.cluster_id}-autoscaler"
-  
+  name = "${module.eks.cluster_id}-autoscaler"
+
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",

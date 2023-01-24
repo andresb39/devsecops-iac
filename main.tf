@@ -1,6 +1,6 @@
 
 module "eks" {
-  source = "terraform-aws-modules/eks/aws"
+  source  = "terraform-aws-modules/eks/aws"
   version = "18.17.0"
 
   cluster_name                    = var.cluster_name
@@ -60,16 +60,16 @@ module "eks" {
 
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
-    ami_type       = "AL2_x86_64"
-    disk_size      = 50
-    instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
-    capacity_type  = "SPOT"
+    ami_type               = "AL2_x86_64"
+    disk_size              = 50
+    instance_types         = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
+    capacity_type          = "SPOT"
     vpc_security_group_ids = [aws_security_group.additional.id]
   }
 
   eks_managed_node_groups = {
     worker = {
-      name = "eks-worker"
+      name            = "eks-worker"
       use_name_prefix = true
 
       create_launch_template = false
@@ -111,8 +111,8 @@ module "eks" {
 
       description = "EKS managed node group"
 
-      ebs_optimized           = true
-      
+      ebs_optimized = true
+
       disable_api_termination = false
       enable_monitoring       = true
 
@@ -155,7 +155,7 @@ module "eks" {
       security_group_name            = "eks-managed-node-group-worker"
       security_group_use_name_prefix = false
       security_group_description     = "EKS managed node group worker"
-      security_group_tags             = {
+      security_group_tags = {
         Purpose = "Protector of the kubelet"
       }
 
@@ -170,8 +170,8 @@ module "eks" {
 
 # You must have the eksctl tool installed before 
 resource "null_resource" "oidc" {
-  provisioner "local-exec" { 
-    command = "eksctl utils associate-iam-oidc-provider --region us-east-1 --cluster ${var.cluster_name} --approve"  
+  provisioner "local-exec" {
+    command = "eksctl utils associate-iam-oidc-provider --region us-east-1 --cluster ${var.cluster_name} --approve"
   }
   depends_on = [module.eks]
 }
