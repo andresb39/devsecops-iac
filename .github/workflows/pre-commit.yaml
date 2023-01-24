@@ -67,6 +67,11 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Install jq
+        run: |
+          sudo apt update
+          sudo apt install -y jq
+
       - name: Terraform Plan and validate
         run: |
           terraform plan -out tfplan
