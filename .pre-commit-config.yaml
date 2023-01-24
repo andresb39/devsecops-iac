@@ -40,7 +40,7 @@ repos:
 
   #With bridgecrew
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: 'test_check' # change to tag or sha
+    rev: '2.2.299' # change to tag or sha
     hooks:
       - id: checkov
         verbose: true
