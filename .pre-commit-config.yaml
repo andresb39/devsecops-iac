@@ -35,7 +35,7 @@
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
       - id: mixed-line-ending
-        args: ['--fix=lf']
+        args: ['--fix=auto']
       - id: check-json
       - id: check-yaml
 
