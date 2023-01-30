@@ -32,8 +32,8 @@
     rev: v4.4.0  # Use the ref you want to point at
     hooks:
       - id: check-merge-conflict
-#      - id: trailing-whitespace
-#        args: [--markdown-linebreak-ext=md]
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
       - id: mixed-line-ending
         args: ['--fix=lf']
       - id: check-json
