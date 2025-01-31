@@ -53,32 +53,14 @@ jobs:
 
   terraform:
     needs: checkov
-    name: 'Terraform'
+    name: "Terraform"
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Terraform
-        env:
-          TERRAFORM_VERSION: "1.1.7"
-        run: |
-            tf_version=$TERRAFORM_VERSION
-            wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
-            unzip terraform_"$tf_version"_linux_amd64.zip
-            sudo mv terraform /usr/local/bin/
-
-      - name: Terraform Format
-        run: terraform fmt
-
       - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Plan and validate
-        run: |
-          terraform plan -out tfplan
-          terraform show -json tfplan | jq '.' > tfplan.json
-          docker run --volume "${{ github.workspace }}:/tf" -w /tf bridgecrew/checkov -f tfplan.json --soft-fail
-          
-          
+        uses: andresb39@tf-orchestrator@v1-beta
+        with:
+          arg: true
