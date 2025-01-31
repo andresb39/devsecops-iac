@@ -3,7 +3,6 @@ resource "aws_s3_bucket" "my_test_bucket" {
   bucket = var.bucket_name
   tags = {
     Name = var.bucket_name
-    Application = "My Test Application"
   }
 }
 
