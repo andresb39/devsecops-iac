@@ -68,4 +68,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: andresb39/tf-orchestrator@v1-beta
         with:
-          arg: true
+          arg: plan
