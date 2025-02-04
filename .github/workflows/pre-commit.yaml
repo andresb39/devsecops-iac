@@ -67,9 +67,9 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install tfenv
-        uses: rhythmictech/actions-setup-tfenv@v0.1.2
-
+      # - name: Install tfenv
+      #   uses: rhythmictech/actions-setup-tfenv@v0.1.2
+      #
       - name: Terraform Init
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
