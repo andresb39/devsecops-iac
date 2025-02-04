@@ -52,7 +52,7 @@ jobs:
           framework: terraform
 
   terraform:
-    needs: checkov
+    # needs: checkov
     name: "Terraform"
     runs-on: ubuntu-latest
 
